@@ -11,7 +11,7 @@ firefox_options.add_argument("--headless")
 url= "https://bgp.he.net/"
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-o","--org", help="Organization to be searched for", required=True)
+parser.add_argument("-o","--org", help="Organization to be searched for.", required=True)
 args = parser.parse_args()
 org = args.org
 print("Searching for:", org)
@@ -22,10 +22,9 @@ browser.get("https://bgp.he.net/search?search%5Bsearch%5D="+str(org)+"&commit=Se
 sleep(5)
 
 data = BeautifulSoup(browser.page_source, features="lxml")
-
 table = data.find('table',{"class":"w100p"})
 browser.quit()
-#Read table with pandas
+
 df = pd.read_html(table.prettify())
 df_frame = pd.DataFrame(df[0])
 df_frame.columns = ['IPs','Name']
