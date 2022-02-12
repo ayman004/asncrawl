@@ -22,7 +22,8 @@ browser.get("https://bgp.he.net/search?search%5Bsearch%5D="+str(org)+"&commit=Se
 sleep(5)
 
 data = BeautifulSoup(browser.page_source, features="lxml")
-table = data.find('table',{"class":"w100p"})
+if data:
+	table = data.find('table',{"class":"w100p"})
 browser.quit()
 
 df = pd.read_html(table.prettify())
