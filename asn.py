@@ -35,7 +35,6 @@ except Exception as e:
 
 df_frame = pd.DataFrame(df[0])
 df_frame.columns = ['IPs','Name']
-df_frame = df_frame[1:]
 print(df_frame)	
 
 if not df_frame.empty:
